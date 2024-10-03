@@ -1,0 +1,196 @@
+.model FSMD
+.inputs PRIMO1 PRIMO0 SECONDO1 SECONDO0 INIZIA
+.outputs MANCHE1 MANCHE0 PARTITA1 PARTITA0
+.latch    [19] LatchOut_v5   0
+.latch    [20] LatchOut_v6   0
+.latch    [21] LatchOut_v7   0
+.latch    NewLockP1 Plock1 re NIL 0
+.latch    NewLockP0 Plock0 re NIL 0
+.latch    NewLockS1 Slock1 re NIL 0
+.latch    NewLockS0 Slock0 re NIL 0
+.latch    MancheAttuali4 Count4 re NIL 0
+.latch    MancheAttuali3 Count3 re NIL 0
+.latch    MancheAttuali2 Count2 re NIL 0
+.latch    MancheAttuali1 Count1 re NIL 0
+.latch    MancheAttuali0 Count0 re NIL 0
+.latch    NewMax4 MaxMosse4 re NIL 0
+.latch    NewMax3 MaxMosse3 re NIL 0
+.latch    NewMax2 MaxMosse2 re NIL 0
+.latch    NewMax1 MaxMosse1 re NIL 0
+.latch    NewMax0 MaxMosse0 re NIL 0
+.names PRIMO1 PRIMO0 MancaS0 NewLockP0 NewLockS1 [879] [889] MANCHE1
+----1-- 1
+1--0--1 1
+-110-1- 1
+.names MANCHE1 NewLockP1 NewLockP0 NewLockS1 NewLockS0 MANCHE0
+-1--- 1
+--1-- 1
+1--00 1
+.names INIZIA MANCHE1 MANCHE0 MinManche MaxManche [19] [20] [21] [882] \
+PARTITA1
+----11--- 1
+---1-11-- 1
+--01----1 1
+0-0-1--0- 1
+-1--1-00- 1
+.names INIZIA MANCHE1 MANCHE0 MinManche MaxManche LatchOut_v5 [19] [20] [21] \
+[890] PARTITA0
+--1-1-0--- 1
+----10-1-- 1
+---1-0-01- 1
+-0-1--0--1 1
+00--1--00- 1
+.names CurrentCount4 CurrentCount3 CurrentCount2 MinManche
+1-- 1
+-1- 1
+--1 1
+.names CurrentCount1 CurrentCount0 MaxMosse1 MaxMosse0 [897] MaxManche
+11111 1
+01011 1
+10101 1
+00001 1
+.names INIZIA MANCHE1 MANCHE0 MinManche MaxManche LatchOut_v5 LatchOut_v6 [20] \
+[21] [882] [884] [19]
+------0--1- 1
+0-0--1----- 1
+---1-1-1--- 1
+--1--1----1 1
+-10-0-0-0-- 1
+.names INIZIA MANCHE1 MinManche MaxManche LatchOut_v5 LatchOut_v6 [21] [875] \
+[882] [884] [886] [890] [892] [20]
+--1--------1- 1
+-1------0--1- 1
+--------1-0-1 1
+--1-11-1----- 1
+0----1---1-0- 1
+00---1------0 1
+-0-00-01----- 1
+.names MANCHE1 MinManche MaxManche LatchOut_v5 LatchOut_v6 LatchOut_v7 [875] \
+[882] [886] [890] [892] [21]
+-----1---1- 1
+--1-------1 1
+------0---1 1
+-----1-11-- 1
+----00-10-- 1
+00-0-----1- 1
+-1-00-----1 1
+.names PRIMO1 PRIMO0 Plock1 Plock0 BlockP
+0-01 1
+-010 1
+1111 1
+.names MancaS1 MancaS0 Slock1 Slock0 BlockS
+0-01 1
+-010 1
+1111 1
+.names INIZIA SECONDO1 MancaS1
+01 1
+.names INIZIA SECONDO0 MancaS0
+01 1
+.names Count4 Count3 Count2 [875] [877] [899] CurrentCount4
+100-1- 1
+-1-101 1
+.names CurrentCount4 CurrentCount2 Count4 Count3 [899] CurrentCount3
+0-01- 1
+-0-01 1
+.names CurrentCount1 CurrentCount0 Count4 Count2 Count1 [877] [899] \
+CurrentCount2
+-1-1--- 1
+-----11 1
+0-001-- 1
+.names CurrentCount0 Count4 Count3 Count2 Count1 Count0 CurrentCount1
+1---1- 1
+-0--10 1
+00--01 1
+--0010 1
+0-0001 1
+.names CurrentCount4 Count4 Count0 [875] CurrentCount0
+1-01 1
+-001 1
+1-10 1
+-010 1
+.names MancaS1 MancaS0 NewLockP0 NewLockS0 [876] [879] NewLockP1
+-01--- 1
+0--001 1
+.names PRIMO0 NewLockS1 [876] [889] NewLockP0
+1011 1
+.names PRIMO1 PRIMO0 MancaS1 MancaS0 NewLockS0 [889] NewLockS1
+--1-1- 1
+01-0-1 1
+.names PRIMO0 MancaS1 [876] [879] [889] NewLockS0
+0-0-1 1
+1001- 1
+.names INIZIA CurrentCount4 MancheAttuali4
+01 1
+.names INIZIA CurrentCount3 MancheAttuali3
+01 1
+.names INIZIA CurrentCount2 MancheAttuali2
+01 1
+.names INIZIA CurrentCount1 MancheAttuali1
+01 1
+.names INIZIA CurrentCount0 MancheAttuali3 MancheAttuali2 MancheAttuali1 \
+MancheAttuali0
+-11-- 1
+-1--1 1
+01-0- 1
+.names PRIMO1 PRIMO0 SECONDO1 SECONDO0 INIZIA MaxMosse4 MaxMosse3 MaxMosse2 \
+MaxMosse1 MaxMosse0 NewMax4
+110-1----- 1
+11-01----- 1
+----01000- 1
+----0100-0 1
+.names PRIMO1 PRIMO0 INIZIA MaxMosse3 [891] NewMax3
+---11 1
+011-- 1
+101-- 1
+.names PRIMO0 INIZIA MaxMosse2 [891] NewMax2
+01-- 1
+--11 1
+.names SECONDO1 SECONDO0 INIZIA MaxMosse3 MaxMosse2 MaxMosse1 MaxMosse0 \
+NewMax0 [891] NewMax1
+-----1--1 1
+101------ 1
+1-1----1- 1
+--00010-- 1
+.names SECONDO1 SECONDO0 INIZIA MancaS0 MaxMosse0 NewMax4 NewMax3 NewMax2 \
+[891] NewMax0
+----1---1 1
+01-0----- 1
+--0-11--- 1
+-1-0--1-- 1
+-1-0---1- 1
+.names MANCHE1 MANCHE0 [875]
+1- 1
+-1 1
+.names PRIMO1 MancaS0 [876]
+0- 1
+-0 1
+.names Count1 Count0 [877]
+0- 1
+-0 1
+.names BlockP BlockS [879]
+00 1
+.names MANCHE1 LatchOut_v5 [882]
+11 1
+.names MaxManche LatchOut_v7 [884]
+1- 1
+-1 1
+.names MANCHE0 MinManche [886]
+1- 1
+-1 1
+.names MancaS1 [879] [889]
+11 1
+.names MANCHE0 LatchOut_v6 [890]
+11 1
+.names INIZIA MaxMosse4 [891]
+00 1
+.names INIZIA LatchOut_v7 [892]
+01 1
+.names CurrentCount4 CurrentCount3 CurrentCount2 MaxMosse4 MaxMosse3 MaxMosse2 \
+[897]
+1--100 1
+-11011 1
+-01001 1
+-10010 1
+.names Count4 Count2 [899]
+01 1
+.end

@@ -1,0 +1,14 @@
+.model DeMux2
+.inputs In1 In0 Inizia
+.outputs Manca1 Manca0 Mossa1 Mossa0
+
+.names Inizia In1 Manca1
+01 1
+.names Inizia In0 Manca0
+01 1
+.names Inizia In1 Mossa1
+11 1
+.names Inizia In0 Mossa0
+11 1
+
+.end

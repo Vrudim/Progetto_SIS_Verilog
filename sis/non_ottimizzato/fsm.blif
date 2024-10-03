@@ -1,0 +1,85 @@
+.model fsm
+.inputs Primo Secondo Min Max Inizia
+.outputs VittoriaPrimo VittoriaSecondo
+.start_kiss
+.i 5
+.o 2
+.p 28
+.s 8
+.r Inizia
+
+# [inputs] [stato_corrente] [stato_prossimo] [outputs]
+----1 Inizia Inizia 00
+01000 Inizia VantaggioP1 00
+11000 Inizia pareggio 00
+10000 Inizia VantaggioS1 00
+
+11-00 pareggio pareggio 00
+00-00 pareggio pareggio 00
+01110 pareggio pareggio 01
+10110 pareggio pareggio 10
+11110 pareggio pareggio 11
+01-00 pareggio VantaggioP1 00
+10-00 pareggio VantaggioS1 00
+----1 pareggio Inizia 00
+
+11-00 VantaggioP1 VantaggioP1 00
+00-00 VantaggioP1 VantaggioP1 00
+011-0 VantaggioP1 VantaggioP1 01
+11110 VantaggioP1 VantaggioP1 01
+10110 VantaggioP1 VantaggioP1 11
+01000 VantaggioP1 VantaggioP2 00
+10-00 VantaggioP1 pareggio 00
+----1 VantaggioP1 Inizia 00
+
+11-00 VantaggioP2 VantaggioP2 00
+00-00 VantaggioP2 VantaggioP2 00
+011-0 VantaggioP2 VantaggioP2 01
+10110 VantaggioP2 VantaggioP2 01
+11110 VantaggioP2 VantaggioP2 01
+01000 VantaggioP2 VantaggioP3 00
+10-00 VantaggioP2 VantaggioP1 00
+----1 VantaggioP2 Inizia 00
+
+00000 VantaggioP3 VantaggioP3 00
+011-0 VantaggioP3 VantaggioP3 01
+101-0 VantaggioP3 VantaggioP3 01
+111-0 VantaggioP3 VantaggioP3 01
+----1 VantaggioP3 Inizia 00
+
+11-00 VantaggioS1 VantaggioS1 00
+00-00 VantaggioS1 VantaggioS1 00
+01110 VantaggioS1 VantaggioS1 11
+101-0 VantaggioS1 VantaggioS1 10
+11110 VantaggioS1 VantaggioS1 10
+10000 VantaggioS1 VantaggioS2 00
+01-00 VantaggioS1 pareggio 00
+----1 VantaggioS1 Inizia 00
+
+11-00 VantaggioS2 VantaggioS2 00
+00-00 VantaggioS2 VantaggioS2 00
+01110 VantaggioS2 VantaggioS2 10
+101-0 VantaggioS2 VantaggioS2 10
+11110 VantaggioS2 VantaggioS2 10
+10000 VantaggioS2 VantaggioS3 00
+01-00 VantaggioS2 VantaggioS1 00
+----1 VantaggioS2 Inizia 00
+
+00000 VantaggioS3 VantaggioS3 00
+011-0 VantaggioS3 VantaggioS3 10
+101-0 VantaggioS3 VantaggioS3 10
+111-0 VantaggioS3 VantaggioS3 10
+----1 VantaggioS3 Inizia 00
+.end_kiss
+
+# codificare gli stati
+.code Inizia 000
+.code pareggio 001
+.code VantaggioP1 010
+.code VantaggioP2 011
+.code VantaggioP3 100
+.code VantaggioS1 101
+.code VantaggioS2 110
+.code VantaggioS3 111
+
+.end

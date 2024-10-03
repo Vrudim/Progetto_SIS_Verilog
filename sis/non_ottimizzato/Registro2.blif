@@ -1,0 +1,10 @@
+.model Registro2
+.inputs In1 In0
+.outputs Out1 Out0
+
+.subckt Registro In=In1 Out=Out1
+.subckt Registro In=In0 Out=Out0
+
+.search Registro.blif
+
+.end

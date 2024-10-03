@@ -1,0 +1,39 @@
+.model DataPath
+.inputs Inizia Primo1 Primo0 Secondo1 Secondo0
+.outputs VittoriaP VittoriaS MinMove MaxMove
+
+#Ricaovo Manca e Mosse richieste
+.subckt DeMux2 In1=Primo1 In0=Primo0 Inizia=Inizia Manca1=MancaP1 Manca0=MancaP0 Mossa1=MossaP1 Mossa0=MossaP0
+.subckt DeMux2 In1=Secondo1 In0=Secondo0 Inizia=Inizia Manca1=MancaS1 Manca0=MancaS0 Mossa1=MossaS1 Mossa0=MossaS0
+
+#Eseguo le Manche e salvo le mosse vincenti
+.subckt Play MancaP1=MancaP1 MancaP0=MancaP0 MancaS1=MancaS1 MancaS0=MancaS0 PLock1=Plock1 PLock0=Plock0 SLock1=Slock1 SLock0=Slock0 PVince=VittoriaP SVince=VittoriaS NLockP1=NewLockP1 NLockP0=NewLockP0 NLockS1=NewLockS1 NLockS0=NewLockS0
+.subckt Registro2 In1=NewLockP1 In0=NewLockP0 Out1=Plock1 Out0=Plock0
+.subckt Registro2 In1=NewLockS1 In0=NewLockS0 Out1=Slock1 Out0=Slock0
+
+#Implemento un contatore per gestire la quantita di manche da eseguire
+.subckt Counter S1=VittoriaS S0=VittoriaP In4=Count4 In3=Count3 In2=Count2 In1=Count1 In0=Count0 Out4=CurrentCount4 Out3=CurrentCount3 Out2=CurrentCount2 Out1=CurrentCount1 Out0=CurrentCount0
+.subckt Reset Inizia=Inizia In4=CurrentCount4 In3=CurrentCount3 In2=CurrentCount2 In1=CurrentCount1 In0=CurrentCount0 Out4=MancheAttuali4 Out3=MancheAttuali3 Out2=MancheAttuali2 Out1=MancheAttuali1 Out0=MancheAttuali0
+.subckt Registro5 In4=MancheAttuali4 In3=MancheAttuali3 In2=MancheAttuali2 In1=MancheAttuali1 In0=MancheAttuali0 Out4=Count4 Out3=Count3 Out2=Count2 Out1=Count1 Out0=Count0
+
+# Controllo se si e raggiunto il minimo o massimo
+.subckt CompareMax In4=CurrentCount4 In3=CurrentCount3 In2=CurrentCount2 In1=CurrentCount1 In0=CurrentCount0 Cm4=MaxMosse4 Cm3=MaxMosse3 Cm2=MaxMosse2 Cm1=MaxMosse1 Cm0=MaxMosse0 Out=MaxMove
+.subckt CompareMin In4=CurrentCount4 In3=CurrentCount3 In2=CurrentCount2 In1=CurrentCount1 In0=CurrentCount0 Out=MinMove
+
+# Imposto il numero di manche da eseguire
+.subckt DettMosse Primo1=MossaP1 Primo0=MossaP0 Secondo1=MossaS1 Secondo0=MossaS0 Out4=Dett4 Out3=Dett3 Out2=Dett2 Out1=Dett1 Out0=Dett0
+.subckt Mux In4=MaxMosse4 In3=MaxMosse3 In2=MaxMosse2 In1=MaxMosse1 In0=MaxMosse0 NIn4=Dett4 NIn3=Dett3 NIn2=Dett2 NIn1=Dett1 NIn0=Dett0 Inizia=Inizia Out4=NewMax4 Out3=NewMax3 Out2=NewMax2 Out1=NewMax1 Out0=NewMax0
+.subckt Registro5 In4=NewMax4 In3=NewMax3 In2=NewMax2 In1=NewMax1 In0=NewMax0 Out4=MaxMosse4 Out3=MaxMosse3 Out2=MaxMosse2 Out1=MaxMosse1 Out0=MaxMosse0
+
+.search DeMux2.blif
+.search Play.blif
+.search Registro2.blif
+.search Registro5.blif
+.search DettMosse.blif
+.search Counter.blif
+.search Reset.blif
+.search CompareMax.blif
+.search CompareMin.blif
+.search Registro5.blif
+.search Mux.blif
+.end

@@ -1,0 +1,58 @@
+.model Play
+#Il formato e Manca Giocatore Primo | Manca Giocatore Secondo | Mossa Blocata Primo | Mossa
+.inputs MancaP1 MancaP0 MancaS1 MancaS0 PLock1 PLock0 SLock1 SLock0
+.outputs PVince SVince NLockP1 NLockP0 NLockS1 NLockS0
+
+#Le Manche sono 
+ #00 Nessuna Mossa partita invalida
+ #01 Sasso
+ #10 Carta
+ #11 Forbice
+#
+
+# Controllo se qualcuno usa una mosa blocata
+.names PLock1 PLock0 MancaP1 MancaP0 BlockP
+0101 1
+1010 1
+1111 1
+.names SLock1 SLock0 MancaS1 MancaS0 BlockS
+0101 1
+1010 1
+1111 1
+
+# Controllo se il Primo Giocatore ha vinto o paregiato
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 PVince
+000101 1
+000111 1
+001001 1
+001010 1
+001110 1
+001111 1
+
+
+# Controllo se il Secondo Giocatore ha vinto o paregiato
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 SVince
+000101 1
+001101 1
+001010 1
+000110 1
+001011 1
+001111 1
+
+# Ritorno le nuove mosse blocate
+# Primo Giocatore
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 NLockP1
+001001 1
+001110 1
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 NLockP0
+000111 1
+001110 1
+
+# Secondo Giocatore
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 NLockS1
+000110 1
+001011 1
+.names BlockP BlockS MancaP1 MancaP0 MancaS1 MancaS0 NLockS0
+001011 1
+001101 1
+.end

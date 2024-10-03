@@ -1,0 +1,10 @@
+.model FSMD
+.inputs PRIMO1 PRIMO0 SECONDO1 SECONDO0 INIZIA
+.outputs MANCHE1 MANCHE0 PARTITA1 PARTITA0
+
+.subckt DataPath Inizia=INIZIA Primo1=PRIMO1 Primo0=PRIMO0 Secondo1=SECONDO1 Secondo0=SECONDO0 VittoriaP=MANCHE0 VittoriaS=MANCHE1 MinMove=MinManche MaxMove=MaxManche
+.subckt controllo Primo=MANCHE1 Secondo=MANCHE0 Min=MinManche Max=MaxManche Inizia=INIZIA VittoriaPrimo=PARTITA1 VittoriaSecondo=PARTITA0
+
+.search DataPath.blif
+.search controllo.blif
+.end
